@@ -1,0 +1,246 @@
+import { useEffect, useState } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { X, ZoomIn } from 'lucide-react';
+import gsap from 'gsap';
+
+const Gallery = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    gsap.fromTo('.gallery-item',
+      { opacity: 0, scale: 0.8 },
+      { 
+        opacity: 1, 
+        scale: 1, 
+        duration: 0.6, 
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: '.gallery-grid',
+          start: 'top 80%',
+        }
+      }
+    );
+  }, []);
+
+  const galleryImages = [
+    {
+      id: 1,
+      src: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      alt: "Modern dental clinic reception area",
+      category: "Clinic Interior"
+    },
+    {
+      id: 2,
+      src: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      alt: "Advanced dental treatment room",
+      category: "Treatment Rooms"
+    },
+    {
+      id: 3,
+      src: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      alt: "Happy patient with beautiful smile",
+      category: "Patient Smiles"
+    },
+    {
+      id: 4,
+      src: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      alt: "Dental team performing procedure",
+      category: "Team at Work"
+    },
+    {
+      id: 5,
+      src: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      alt: "State-of-the-art dental equipment",
+      category: "Technology"
+    },
+    {
+      id: 6,
+      src: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      alt: "Comfortable waiting area",
+      category: "Clinic Interior"
+    },
+    {
+      id: 7,
+      src: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      alt: "Before and after dental treatment",
+      category: "Results"
+    },
+    {
+      id: 8,
+      src: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      alt: "Pediatric dental care room",
+      category: "Pediatric Care"
+    },
+    {
+      id: 9,
+      src: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      alt: "Dental implant procedure",
+      category: "Procedures"
+    },
+    {
+      id: 10,
+      src: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      alt: "Orthodontic treatment results",
+      category: "Results"
+    },
+    {
+      id: 11,
+      src: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      alt: "Sterilization and hygiene area",
+      category: "Hygiene"
+    },
+    {
+      id: 12,
+      src: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      alt: "Consultation room",
+      category: "Consultation"
+    }
+  ];
+
+  const categories = ["All", "Clinic Interior", "Treatment Rooms", "Patient Smiles", "Team at Work", "Technology", "Results"];
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const filteredImages = selectedCategory === "All" 
+    ? galleryImages 
+    : galleryImages.filter(img => img.category === selectedCategory);
+
+  return (
+    <div className="min-h-screen pt-32">
+      {/* Header Section */}
+      <section className="py-16 bg-gradient-primary text-primary-foreground">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-playfair font-bold mb-6">
+            Our <span className="text-accent">Gallery</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-3xl mx-auto">
+            Take a look at our modern facilities, advanced technology, and the beautiful smiles we've created for our patients.
+          </p>
+        </div>
+      </section>
+
+      {/* Category Filter */}
+      <section className="py-8 bg-background border-b border-border">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap justify-center gap-3">
+            {categories.map((category) => (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
+                className={`rounded-full px-6 py-2 ${
+                  selectedCategory === category 
+                    ? "bg-primary text-primary-foreground" 
+                    : "hover:bg-primary/10"
+                }`}
+                onClick={() => setSelectedCategory(category)}
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery Grid */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="gallery-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredImages.map((image, index) => (
+              <Card 
+                key={image.id} 
+                className="gallery-item group cursor-pointer overflow-hidden border-0 shadow-soft hover:shadow-medium transition-all duration-300"
+                onClick={() => setSelectedImage(image.src)}
+              >
+                <CardContent className="p-0">
+                  <div className="relative aspect-square overflow-hidden">
+                    <img 
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-300 flex items-center justify-center">
+                      <ZoomIn className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-secondary/80 to-transparent p-4">
+                      <p className="text-white text-sm font-medium">{image.category}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Image Modal */}
+      {selectedImage && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <div className="relative max-w-4xl max-h-[90vh] w-full">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="absolute -top-12 right-0 text-white hover:text-accent"
+              onClick={() => setSelectedImage(null)}
+            >
+              <X className="w-6 h-6" />
+            </Button>
+            <img 
+              src={selectedImage}
+              alt="Gallery image"
+              className="w-full h-full object-contain rounded-lg"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Statistics Section */}
+      <section className="py-16 bg-muted">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { number: "2", label: "Modern Clinics", icon: "🏥" },
+              { number: "15+", label: "Years Experience", icon: "⏰" },
+              { number: "5000+", label: "Happy Patients", icon: "😊" },
+              { number: "10+", label: "Advanced Equipment", icon: "⚙️" },
+            ].map((stat, index) => (
+              <div key={index}>
+                <div className="text-3xl mb-2">{stat.icon}</div>
+                <div className="text-3xl md:text-4xl font-bold text-primary mb-1">{stat.number}</div>
+                <p className="text-muted-foreground">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-gradient-primary text-primary-foreground">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
+            Ready to Experience Our Care?
+          </h2>
+          <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+            Visit our modern facilities and experience world-class dental care in a comfortable environment.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              className="bg-accent hover:bg-accent-hover text-accent-foreground px-8 py-4 rounded-full text-lg font-medium"
+              asChild
+            >
+              <a href="/contact">Book a Visit</a>
+            </Button>
+            <Button 
+              variant="outline"
+              className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-4 rounded-full text-lg font-medium"
+              asChild
+            >
+              <a href="tel:+919650780998">Call Us</a>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Gallery;
