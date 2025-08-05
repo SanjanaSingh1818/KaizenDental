@@ -1,14 +1,26 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ArrowRight, Star, Users, Award, Clock } from 'lucide-react';
+import { ArrowRight, Star, Users, Award, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
+import useEmblaCarousel from 'embla-carousel-react';
+import heroImage1 from '@/assets/hero-dental-1.jpg';
+import heroImage2 from '@/assets/hero-dental-2.jpg';
 
 const Home = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
   useEffect(() => {
     // Hero section animations
@@ -69,17 +81,12 @@ const Home = () => {
     {
       title: "Your Smile is Our Priority",
       subtitle: "Professional dental care with cutting-edge technology and personalized treatment plans for the whole family.",
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png"
+      image: heroImage1
     },
     {
-      title: "Advanced Dental Solutions",
+      title: "Advanced Dental Solutions", 
       subtitle: "From routine cleanings to complex procedures, we provide comprehensive dental care in a comfortable environment.",
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png"
-    },
-    {
-      title: "Expert Care, Gentle Touch",
-      subtitle: "Our experienced team combines expertise with compassion to deliver exceptional dental care for every patient.",
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png"
+      image: heroImage2
     }
   ];
 
@@ -93,42 +100,69 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section with Carousel */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-hero z-10"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroSlides[0].image})` }}
-        ></div>
-        
-        <div className="relative z-20 container mx-auto px-4 text-center text-white">
-          <div className="hero-content max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-playfair font-bold mb-6 leading-tight">
-              Your Smile is Our{' '}
-              <span className="text-accent">Priority</span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
-              Professional dental care with cutting-edge technology and personalized treatment plans for the whole family.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                className="btn-primary bg-accent hover:bg-accent-hover text-accent-foreground px-8 py-4 rounded-full text-lg font-medium group"
-                asChild
-              >
-                <Link to="/contact">
-                  Book Appointment
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-              <Button 
-                variant="outline" 
-                className="border-2 border-white text-white hover:bg-white hover:text-secondary px-8 py-4 rounded-full text-lg font-medium"
-                asChild
-              >
-                <Link to="/services">Our Services</Link>
-              </Button>
-            </div>
+      <section className="relative h-screen overflow-hidden">
+        <div className="embla" ref={emblaRef}>
+          <div className="embla__container flex">
+            {heroSlides.map((slide, index) => (
+              <div key={index} className="embla__slide flex-none w-full relative">
+                <div className="absolute inset-0 bg-gradient-hero z-10"></div>
+                <div 
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${slide.image})` }}
+                ></div>
+                
+                <div className="relative z-20 container mx-auto px-4 h-screen flex items-center justify-center text-center text-white">
+                  <div className="hero-content max-w-4xl mx-auto">
+                    <h1 className="text-5xl md:text-7xl font-playfair font-bold mb-6 leading-tight">
+                      {slide.title.split(' ').map((word, idx) => 
+                        word === 'Priority' || word === 'Solutions' ? (
+                          <span key={idx} className="text-accent">{word} </span>
+                        ) : (
+                          <span key={idx}>{word} </span>
+                        )
+                      )}
+                    </h1>
+                    <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
+                      {slide.subtitle}
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                      <Button 
+                        className="btn-primary bg-accent hover:bg-accent-hover text-accent-foreground px-8 py-4 rounded-full text-lg font-medium group"
+                        asChild
+                      >
+                        <Link to="/contact">
+                          Book Appointment
+                          <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        className="border-2 border-white text-white hover:bg-white hover:text-secondary px-8 py-4 rounded-full text-lg font-medium"
+                        asChild
+                      >
+                        <Link to="/services">Our Services</Link>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
+
+        {/* Carousel Navigation */}
+        <button 
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+          onClick={scrollPrev}
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button 
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+          onClick={scrollNext}
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
@@ -174,29 +208,29 @@ const Home = () => {
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-accent rounded-full mt-3"></div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 bg-primary rounded-full mt-3"></div>
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Advanced Technology</h4>
                     <p className="text-muted-foreground text-sm">Latest dental equipment and techniques</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-accent rounded-full mt-3"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full mt-3"></div>
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Expert Team</h4>
                     <p className="text-muted-foreground text-sm">Experienced and certified professionals</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-accent rounded-full mt-3"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full mt-3"></div>
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Comfortable Care</h4>
                     <p className="text-muted-foreground text-sm">Patient-focused, gentle treatments</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-accent rounded-full mt-3"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full mt-3"></div>
                   <div>
                     <h4 className="font-semibold text-foreground mb-1">Emergency Care</h4>
                     <p className="text-muted-foreground text-sm">24/7 emergency dental services</p>

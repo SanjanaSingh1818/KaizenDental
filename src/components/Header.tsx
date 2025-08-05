@@ -65,10 +65,12 @@ const Header = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             {/* Logo */}
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">🦷</span>
-              </div>
+            <div className="flex items-center gap-3">
+              <img 
+                src="/src/assets/logo-placeholder.png" 
+                alt="DentalCare+ Logo" 
+                className="w-10 h-10 object-contain"
+              />
               <span className="text-xl font-playfair font-bold">DentalCare+</span>
             </div>
 
@@ -202,10 +204,12 @@ const Header = () => {
                 <SheetContent side="right" className="w-80 bg-background">
                   <div className="flex flex-col gap-6 pt-6">
                     {/* Mobile Logo */}
-                    <div className="flex items-center gap-2 pb-4 border-b border-border">
-                      <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                        <span className="text-primary-foreground font-bold">🦷</span>
-                      </div>
+                    <div className="flex items-center gap-3 pb-4 border-b border-border">
+                      <img 
+                        src="/src/assets/logo-placeholder.png" 
+                        alt="DentalCare+ Logo" 
+                        className="w-8 h-8 object-contain"
+                      />
                       <span className="text-lg font-playfair font-bold">DentalCare+</span>
                     </div>
 

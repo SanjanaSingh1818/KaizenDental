@@ -8,26 +8,26 @@
 
 @layer base {
   :root {
-    /* Brand Colors - Dental Clinic Theme */
-    --primary: 174 100% 29%; /* #09877f - Brand teal */
-    --primary-light: 174 50% 85%; /* Light teal for hover states */
-    --primary-foreground: 0 0% 100%; /* White text on primary */
+    /* Brand Colors - Teal Theme */
+    --primary: 182 25% 72%; /* #a8dadc - Muted Teal for primary elements */
+    --primary-light: 174 35% 93%; /* #e0f4f3 - Soft Teal Light */
+    --primary-foreground: 0 0% 13%; /* Dark text on primary */
     
     --secondary: 0 0% 0%; /* Black */
     --secondary-foreground: 0 0% 100%; /* White text on black */
     
-    --accent: 33 100% 50%; /* Orange for CTA buttons */
-    --accent-foreground: 0 0% 100%; /* White text on orange */
-    --accent-hover: 33 100% 45%; /* Darker orange for hover */
+    --accent: 191 100% 28%; /* #007c91 - Accent Blue for CTA buttons */
+    --accent-foreground: 0 0% 100%; /* White text on accent */
+    --accent-hover: 191 100% 24%; /* Darker blue for hover */
     
     /* Neutral Colors */
-    --background: 0 0% 100%; /* Pure white */
+    --background: 174 35% 93%; /* #e0f4f3 - Soft Teal Light background */
     --foreground: 0 0% 13%; /* Dark gray text */
-    --muted: 210 40% 96%; /* Light gray backgrounds */
+    --muted: 174 35% 92%; /* #dff3f2 - Teal Gray for sections */
     --muted-foreground: 215 16% 47%; /* Medium gray text */
     
     /* Component Colors */
-    --card: 0 0% 100%; /* White cards */
+    --card: 182 25% 72%; /* #a8dadc - Muted Teal for cards */
     --card-foreground: 0 0% 13%; /* Dark text on cards */
     --popover: 0 0% 100%; /* White popover */
     --popover-foreground: 0 0% 13%; /* Dark text in popover */
@@ -44,15 +44,15 @@
     --destructive-foreground: 0 0% 100%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(174 100% 29%), hsl(174 80% 35%));
-    --gradient-hero: linear-gradient(135deg, hsl(174 100% 29% / 0.95), hsl(0 0% 0% / 0.8));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 40% 98%));
+    --gradient-primary: linear-gradient(135deg, hsl(182 25% 72%), hsl(191 100% 28%));
+    --gradient-hero: linear-gradient(135deg, hsl(191 100% 28% / 0.9), hsl(0 0% 0% / 0.7));
+    --gradient-card: linear-gradient(145deg, hsl(182 25% 72%), hsl(174 35% 92%));
     
     /* Shadows */
-    --shadow-soft: 0 2px 10px hsl(174 100% 29% / 0.1);
-    --shadow-medium: 0 4px 20px hsl(174 100% 29% / 0.15);
-    --shadow-strong: 0 8px 30px hsl(174 100% 29% / 0.2);
-    --shadow-glow: 0 0 40px hsl(174 100% 29% / 0.3);
+    --shadow-soft: 0 2px 10px hsl(191 100% 28% / 0.1);
+    --shadow-medium: 0 4px 20px hsl(191 100% 28% / 0.15);
+    --shadow-strong: 0 8px 30px hsl(191 100% 28% / 0.2);
+    --shadow-glow: 0 0 40px hsl(191 100% 28% / 0.3);
     
     /* Animations & Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -78,7 +78,7 @@
   }
 
   .dark {
-    /* Dark mode adjustments for dental clinic */
+    /* Dark mode adjustments for teal theme */
     --background: 0 0% 5%; /* Very dark background */
     --foreground: 0 0% 95%; /* Light text */
     
@@ -94,12 +94,12 @@
     --border: 0 0% 15%; /* Dark borders */
     --input: 0 0% 15%; /* Dark input borders */
     
-    /* Keep brand colors consistent in dark mode */
-    --primary: 174 100% 35%; /* Slightly lighter teal for dark mode */
-    --accent: 33 100% 55%; /* Slightly lighter orange for dark mode */
+    /* Keep brand colors adapted for dark mode */
+    --primary: 182 30% 60%; /* Lighter muted teal for dark mode */
+    --accent: 191 100% 35%; /* Lighter accent blue for dark mode */
     
     /* Adjust gradients for dark mode */
-    --gradient-hero: linear-gradient(135deg, hsl(174 100% 35% / 0.9), hsl(0 0% 0% / 0.95));
+    --gradient-hero: linear-gradient(135deg, hsl(191 100% 35% / 0.9), hsl(0 0% 0% / 0.95));
     --gradient-card: linear-gradient(145deg, hsl(0 0% 8%), hsl(0 0% 12%));
     
     /* Adjust shadows for dark mode */

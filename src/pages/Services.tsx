@@ -127,12 +127,12 @@ const Services = () => {
   return (
     <div className="min-h-screen pt-32">
       {/* Header Section */}
-      <section className="py-16 bg-gradient-primary text-primary-foreground">
+      <section className="py-16 bg-gradient-primary text-white">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-playfair font-bold mb-6">
             Our <span className="text-accent">Services</span>
           </h1>
-          <p className="text-xl md:text-2xl text-primary-foreground/90 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto">
             Comprehensive dental care services designed to keep your smile healthy and beautiful with the latest technology and techniques.
           </p>
         </div>
@@ -267,12 +267,12 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-primary text-primary-foreground">
+      <section className="py-16 bg-gradient-primary text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-4">
             Ready to Transform Your Smile?
           </h2>
-          <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
             Schedule your consultation today and take the first step towards a healthier, more beautiful smile.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -284,7 +284,7 @@ const Services = () => {
             </Button>
             <Button 
               variant="outline"
-              className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-4 rounded-full text-lg font-medium"
+              className="border-2 border-white text-white hover:bg-white hover:text-secondary px-8 py-4 rounded-full text-lg font-medium"
               asChild
             >
               <a href="tel:+919650780998">Call Now</a>
