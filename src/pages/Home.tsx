@@ -12,7 +12,11 @@ const Home = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    duration: 30,
+    startIndex: 0
+  });
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -23,16 +27,40 @@ const Home = () => {
   }, [emblaApi]);
 
   useEffect(() => {
-    // Hero section animations
+    // Auto-scroll carousel
+    if (emblaApi) {
+      const autoScroll = setInterval(() => {
+        emblaApi.scrollNext();
+      }, 5000); // Change slide every 5 seconds
+
+      return () => clearInterval(autoScroll);
+    }
+  }, [emblaApi]);
+
+  useEffect(() => {
+    // Hero section animations with parallax
     gsap.fromTo('.hero-content',
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 1, delay: 0.5 }
+      { opacity: 0, y: 50, scale: 0.95 },
+      { opacity: 1, y: 0, scale: 1, duration: 1.2, delay: 0.5, ease: "power3.out" }
     );
 
-    gsap.fromTo('.hero-image',
-      { opacity: 0, scale: 0.8 },
-      { opacity: 1, scale: 1, duration: 1, delay: 0.8 }
-    );
+    // Floating animation for hero content
+    gsap.to('.hero-content', {
+      y: -10,
+      duration: 3,
+      ease: "power2.inOut",
+      yoyo: true,
+      repeat: -1
+    });
+
+    // Background image parallax
+    gsap.to('.hero-bg', {
+      scale: 1.1,
+      duration: 20,
+      ease: "none",
+      repeat: -1,
+      yoyo: true
+    });
 
     // Stats counter animation
     gsap.fromTo('.stat-number',
@@ -104,30 +132,37 @@ const Home = () => {
         <div className="embla" ref={emblaRef}>
           <div className="embla__container flex">
             {heroSlides.map((slide, index) => (
-              <div key={index} className="embla__slide flex-none w-full relative">
+              <div key={index} className="embla__slide flex-none w-full relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-hero z-10"></div>
                 <div 
-                  className="absolute inset-0 bg-cover bg-center"
+                  className="hero-bg absolute inset-0 bg-cover bg-center transform transition-transform duration-[20s] ease-linear"
                   style={{ backgroundImage: `url(${slide.image})` }}
                 ></div>
                 
+                {/* Animated overlay particles */}
+                <div className="absolute inset-0 z-15">
+                  <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/20 rounded-full animate-ping"></div>
+                  <div className="absolute top-3/4 right-1/3 w-1 h-1 bg-white/30 rounded-full animate-pulse"></div>
+                  <div className="absolute top-1/2 right-1/4 w-3 h-3 bg-primary/20 rounded-full animate-bounce"></div>
+                </div>
+                
                 <div className="relative z-20 container mx-auto px-4 min-h-screen flex items-center justify-center text-center text-white py-20 md:py-0">
                   <div className="hero-content max-w-4xl mx-auto">
-                    <h1 className="text-5xl md:text-7xl font-playfair font-bold mb-6 leading-tight">
+                    <h1 className="text-5xl md:text-7xl font-playfair font-bold mb-6 leading-tight transform">
                       {slide.title.split(' ').map((word, idx) => 
                         word === 'Priority' || word === 'Solutions' ? (
-                          <span key={idx} className="text-accent">{word} </span>
+                          <span key={idx} className="text-primary bg-black/20 px-2 py-1 rounded-lg backdrop-blur-sm inline-block mx-1 animate-pulse">{word} </span>
                         ) : (
-                          <span key={idx}>{word} </span>
+                          <span key={idx} className="drop-shadow-2xl">{word} </span>
                         )
                       )}
                     </h1>
-                    <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto">
+                    <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto drop-shadow-lg animate-fade-in-scale">
                       {slide.subtitle}
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-in-up">
                       <Button 
-                        className="btn-primary bg-accent hover:bg-accent-hover text-accent-foreground px-8 py-4 rounded-full text-lg font-medium group"
+                        className="btn-primary bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-full text-lg font-medium group shadow-glow transform hover:scale-105 transition-all duration-300"
                         asChild
                       >
                         <Link to="/contact">
@@ -137,7 +172,7 @@ const Home = () => {
                       </Button>
                       <Button 
                         variant="outline" 
-                        className="border-2 border-white text-white hover:bg-white hover:text-secondary px-8 py-4 rounded-full text-lg font-medium"
+                        className="border-2 border-white/50 bg-white/10 backdrop-blur-sm text-white hover:bg-white hover:text-secondary px-8 py-4 rounded-full text-lg font-medium transform hover:scale-105 transition-all duration-300"
                         asChild
                       >
                         <Link to="/services">Our Services</Link>
@@ -150,24 +185,24 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Carousel Navigation */}
+        {/* Carousel Navigation with enhanced styling */}
         <button 
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-14 h-14 bg-primary/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-primary hover:scale-110 transition-all duration-300 shadow-glow"
           onClick={scrollPrev}
         >
-          <ChevronLeft className="w-6 h-6" />
+          <ChevronLeft className="w-7 h-7" />
         </button>
         <button 
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-14 h-14 bg-primary/80 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-primary hover:scale-110 transition-all duration-300 shadow-glow"
           onClick={scrollNext}
         >
-          <ChevronRight className="w-6 h-6" />
+          <ChevronRight className="w-7 h-7" />
         </button>
 
-        {/* Scroll indicator */}
+        {/* Enhanced scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full animate-bounce mt-2"></div>
+          <div className="w-6 h-10 border-2 border-primary bg-white/10 backdrop-blur-sm rounded-full flex justify-center shadow-glow">
+            <div className="w-1 h-3 bg-primary rounded-full animate-bounce mt-2"></div>
           </div>
         </div>
       </section>
