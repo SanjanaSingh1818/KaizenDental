@@ -100,7 +100,7 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section with Carousel */}
-      <section className="relative h-screen overflow-hidden">
+      <section className="relative min-h-screen overflow-hidden pt-32 md:pt-0">
         <div className="embla" ref={emblaRef}>
           <div className="embla__container flex">
             {heroSlides.map((slide, index) => (
@@ -111,7 +111,7 @@ const Home = () => {
                   style={{ backgroundImage: `url(${slide.image})` }}
                 ></div>
                 
-                <div className="relative z-20 container mx-auto px-4 h-screen flex items-center justify-center text-center text-white">
+                <div className="relative z-20 container mx-auto px-4 min-h-screen flex items-center justify-center text-center text-white py-20 md:py-0">
                   <div className="hero-content max-w-4xl mx-auto">
                     <h1 className="text-5xl md:text-7xl font-playfair font-bold mb-6 leading-tight">
                       {slide.title.split(' ').map((word, idx) => 

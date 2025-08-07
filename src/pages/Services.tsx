@@ -22,6 +22,14 @@ const Services = () => {
     );
   }, []);
 
+  const getServiceSlug = (title: string) => {
+    return title.toLowerCase()
+      .replace('teeth aligners & braces', 'aligners-braces')
+      .replace(/\s+/g, '-')
+      .replace(/[&]/g, '')
+      .replace(/--+/g, '-');
+  };
+
   const services = [
     {
       title: "Dental Implants",
@@ -209,8 +217,11 @@ const Services = () => {
                       <Button 
                         variant="outline"
                         className="rounded-full px-4 text-sm"
+                        asChild
                       >
-                        Learn More
+                        <Link to={`/services/${getServiceSlug(service.title)}`}>
+                          Learn More
+                        </Link>
                       </Button>
                     </div>
                   </div>
