@@ -3,6 +3,8 @@ import { Button } from '@/components/ui/button';
 import { Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
+import team1 from '@/assets/team-1.jpg';
+import team2 from '@/assets/team-3.jpeg';
 
 const Specialists = () => {
   useEffect(() => {
@@ -25,7 +27,7 @@ const Specialists = () => {
   const specialists = [
     {
       name: 'Dr. Monika Kamboj – Expert in Periodontology, Implants & Advanced Laser Dentistry',
-      image: 'src/assets/team-1.jpg',
+      image: team1,
       content: (
         <div className="text-muted-foreground">
           <p align="justify">
@@ -60,7 +62,7 @@ const Specialists = () => {
     },
    {
   name: 'Dr. Suruchi Dogra – MDS Oral Surgeon & Implantologist',
-  image: 'src/assets/team-3.jpeg',
+  image: team2,
   content: (
     <div className="text-muted-foreground">
       <p align="justify">
