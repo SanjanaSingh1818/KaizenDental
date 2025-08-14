@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Check, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
+import { motion } from "framer-motion";
 
 const Services = () => {
   useEffect(() => {
@@ -38,98 +39,98 @@ const Services = () => {
       icon: "🦷",
       features: ["Permanent solution", "Natural appearance", "Preserves jawbone", "High success rate"],
       duration: "2-6 months",
-      price: "₹25,000 - ₹50,000",
+      price: "₹2,000 - ₹5,000",
       rating: 4.9,
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png"
+      image: "https://dentalclinickolkata.in/blog/what-are-the-3-types-of-dental-implants.jpg"
     },
     {
       title: "Root Canal Treatment",
       description: "Save your natural tooth with our painless root canal procedures",
       detailedDescription: "Advanced endodontic treatment to save severely damaged or infected teeth. Our painless techniques ensure comfort throughout the procedure.",
-      icon: "🔧",
+      icon: "🦷",
       features: ["Painless procedure", "Saves natural tooth", "Advanced techniques", "Single visit option"],
       duration: "1-2 visits",
-      price: "₹8,000 - ₹15,000",
+      price: "₹8,000 - ₹10,000",
       rating: 4.8,
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png"
+      image: "https://domf5oio6qrcr.cloudfront.net/medialibrary/16407/gettyimages-1543511026.jpg"
     },
     {
       title: "Teeth Aligners & Braces",
       description: "Straighten your teeth with modern orthodontic solutions",
       detailedDescription: "Transform your smile with our comprehensive orthodontic treatments including traditional braces and modern clear aligners.",
-      icon: "📏",
+      icon: "🦷",
       features: ["Invisible aligners", "Traditional braces", "Digital planning", "Regular monitoring"],
       duration: "12-24 months",
-      price: "₹40,000 - ₹1,20,000",
+      price: "₹20,000 - ₹50,000",
       rating: 4.9,
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png"
+      image: "https://lirp.cdn-website.com/86797479/dms3rep/multi/opt/benefits-of-invisalign-640w.jpg"
     },
     {
       title: "Teeth Whitening",
       description: "Professional whitening for a brighter, more confident smile",
       detailedDescription: "Professional teeth whitening treatments that safely and effectively brighten your smile by several shades in just one session.",
-      icon: "✨",
+      icon: "🦷",
       features: ["Immediate results", "Safe procedures", "Long-lasting effects", "Professional grade"],
       duration: "1 hour",
       price: "₹8,000 - ₹12,000",
       rating: 4.7,
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7FVHwQRqp1yCOIR-HQ5s0H0x_G5f_rsawMw&s"
     },
     {
       title: "Oral Surgery",
       description: "Advanced surgical procedures with minimal discomfort",
       detailedDescription: "Comprehensive oral and maxillofacial surgery including wisdom tooth removal, jaw surgery, and surgical extractions.",
-      icon: "🏥",
+      icon: "🦷",
       features: ["Minimal discomfort", "Advanced techniques", "Quick recovery", "Expert surgeons"],
       duration: "30 minutes - 2 hours",
       price: "₹5,000 - ₹25,000",
       rating: 4.8,
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png"
+      image: "https://www.bluedoordentalpasadena.com/wp-content/uploads/2023/05/Oral-Surgery.jpg"
     },
     {
       title: "Preventive Care",
       description: "Regular checkups and cleanings to maintain oral health",
       detailedDescription: "Comprehensive preventive dental care including regular cleanings, examinations, and fluoride treatments to maintain optimal oral health.",
-      icon: "🛡️",
+      icon: "🦷",
       features: ["Regular checkups", "Professional cleaning", "Fluoride treatment", "Oral health education"],
       duration: "30-60 minutes",
       price: "₹2,000 - ₹5,000",
       rating: 4.9,
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png"
+      image: "https://lotusdiagnostic.com/wp-content/uploads/2023/01/close-up-doctor-with-stethoscope.jpg"
     },
     {
       title: "Cosmetic Dentistry",
       description: "Enhance your smile with our cosmetic dental procedures",
       detailedDescription: "Complete smile makeovers including veneers, crowns, and aesthetic treatments to give you the perfect smile you've always wanted.",
-      icon: "💎",
+      icon: "🦷",
       features: ["Smile makeover", "Veneers & crowns", "Aesthetic treatments", "Natural results"],
       duration: "2-4 visits",
       price: "₹15,000 - ₹80,000",
       rating: 4.8,
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9FGc-A0Dru-QTFvuYatq5h37MvELFNf4dqg&s"
     },
     {
       title: "Pediatric Dentistry",
       description: "Specialized dental care for children in a friendly environment",
       detailedDescription: "Child-friendly dental care with specialized techniques and equipment designed to make dental visits comfortable and positive for young patients.",
-      icon: "👶",
+      icon: "🦷",
       features: ["Child-friendly approach", "Specialized techniques", "Preventive focus", "Education for parents"],
       duration: "30-45 minutes",
       price: "₹1,500 - ₹8,000",
       rating: 4.9,
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png"
-    },
-    {
-      title: "Emergency Dental Care",
-      description: "24/7 emergency dental services for urgent dental problems",
-      detailedDescription: "Round-the-clock emergency dental care for sudden dental pain, trauma, or urgent dental problems with immediate relief and treatment.",
-      icon: "🚨",
-      features: ["24/7 availability", "Immediate relief", "Urgent care", "Pain management"],
-      duration: "As needed",
-      price: "₹3,000 - ₹15,000",
-      rating: 4.7,
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png"
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN6E80NfnZzjW6SGSkJP3eE0c_XXbHDT3Tqg&s"
     }
+    // {
+    //   title: "Emergency Dental Care",
+    //   description: "24/7 emergency dental services for urgent dental problems",
+    //   detailedDescription: "Round-the-clock emergency dental care for sudden dental pain, trauma, or urgent dental problems with immediate relief and treatment.",
+    //   icon: "🚨",
+    //   features: ["24/7 availability", "Immediate relief", "Urgent care", "Pain management"],
+    //   duration: "As needed",
+    //   price: "₹3,000 - ₹15,000",
+    //   rating: 4.7,
+    //   image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png"
+    // }
   ];
 
   return (
@@ -234,48 +235,83 @@ const Services = () => {
 
       {/* Why Choose Us Section */}
       <section className="py-20 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4 text-foreground">
-              Why Choose <span className="text-primary">DentalCare+</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We combine advanced technology with personalized care to deliver exceptional dental services
-            </p>
-          </div>
+  <div className="container mx-auto px-4">
+    
+    {/* Heading */}
+    <motion.div
+      className="text-center mb-12"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4 text-foreground">
+        Why Choose <span className="text-primary">Kaizen Dental</span>
+      </h2>
+      <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        Delivering exceptional dental care with a perfect blend of technology, expertise, and compassion.
+      </p>
+    </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: "🏆",
-                title: "Expert Team",
-                description: "Highly qualified specialists with 15+ years experience"
-              },
-              {
-                icon: "⚡",
-                title: "Advanced Technology",
-                description: "State-of-the-art equipment and latest dental techniques"
-              },
-              {
-                icon: "💎",
-                title: "Quality Care",
-                description: "Personalized treatment plans for optimal results"
-              },
-              {
-                icon: "🔒",
-                title: "Safe & Hygienic",
-                description: "Strict sterilization protocols and safety measures"
-              }
-            ].map((benefit, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl mb-4">{benefit.icon}</div>
-                <h3 className="text-lg font-semibold mb-2 text-foreground">{benefit.title}</h3>
-                <p className="text-muted-foreground text-sm">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    {/* Benefits Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <motion.div
+        className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+      >
+        <h3 className="text-xl font-semibold mb-2 text-foreground">Expert Dental Team</h3>
+        <p className="text-muted-foreground text-sm">
+          Our highly qualified dentists bring over 15 years of professional experience and specialized skills.
+        </p>
+      </motion.div>
+
+      <motion.div
+        className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        viewport={{ once: true }}
+      >
+        <h3 className="text-xl font-semibold mb-2 text-foreground">Advanced Technology</h3>
+        <p className="text-muted-foreground text-sm">
+          We utilize the latest dental equipment and techniques for precise, comfortable, and efficient treatments.
+        </p>
+      </motion.div>
+
+      <motion.div
+        className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <h3 className="text-xl font-semibold mb-2 text-foreground">Personalized Care</h3>
+        <p className="text-muted-foreground text-sm">
+          Every treatment plan is tailored to your unique needs, ensuring the best possible results for your smile.
+        </p>
+      </motion.div>
+
+      <motion.div
+        className="bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition duration-300"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        viewport={{ once: true }}
+      >
+        <h3 className="text-xl font-semibold mb-2 text-foreground">Safe & Hygienic</h3>
+        <p className="text-muted-foreground text-sm">
+          We follow strict sterilization protocols and maintain a clean, safe environment for every patient.
+        </p>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
+
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-primary text-white">

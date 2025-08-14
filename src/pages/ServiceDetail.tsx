@@ -37,7 +37,7 @@ const ServiceDetail = () => {
       duration: "2-6 months",
       price: "₹25,000 - ₹50,000",
       rating: 4.9,
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      image: "https://dentalclinickolkata.in/blog/what-are-the-3-types-of-dental-implants.jpg",
       procedure: [
         "Initial consultation and 3D imaging",
         "Surgical placement of titanium implant",
@@ -68,7 +68,7 @@ const ServiceDetail = () => {
       duration: "1-2 visits",
       price: "₹8,000 - ₹15,000",
       rating: 4.8,
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      image: "https://domf5oio6qrcr.cloudfront.net/medialibrary/16407/gettyimages-1543511026.jpg",
       procedure: [
         "Comprehensive examination and X-rays",
         "Local anesthesia administration",
@@ -100,7 +100,7 @@ const ServiceDetail = () => {
       duration: "12-24 months",
       price: "₹40,000 - ₹1,20,000",
       rating: 4.9,
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      image: "https://lirp.cdn-website.com/86797479/dms3rep/multi/opt/benefits-of-invisalign-640w.jpg",
       procedure: [
         "Initial consultation and records",
         "Digital impressions and treatment planning",
@@ -132,7 +132,7 @@ const ServiceDetail = () => {
       duration: "1 hour",
       price: "₹8,000 - ₹12,000",
       rating: 4.7,
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7FVHwQRqp1yCOIR-HQ5s0H0x_G5f_rsawMw&s",
       procedure: [
         "Pre-whitening examination",
         "Gum protection application",
@@ -164,7 +164,7 @@ const ServiceDetail = () => {
       duration: "30 minutes - 2 hours",
       price: "₹5,000 - ₹25,000",
       rating: 4.8,
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      image: "https://www.bluedoordentalpasadena.com/wp-content/uploads/2023/05/Oral-Surgery.jpg",
       procedure: [
         "Pre-surgical consultation and imaging",
         "Anesthesia or sedation administration",
@@ -197,7 +197,7 @@ const ServiceDetail = () => {
       duration: "30-60 minutes",
       price: "₹2,000 - ₹5,000",
       rating: 4.9,
-      image: "/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png",
+      image: "https://lotusdiagnostic.com/wp-content/uploads/2023/01/close-up-doctor-with-stethoscope.jpg",
       procedure: [
         "Medical and dental history review",
         "Comprehensive oral examination",

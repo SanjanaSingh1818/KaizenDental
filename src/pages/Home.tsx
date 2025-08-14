@@ -1,17 +1,39 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight, Star, Users, Award, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import useEmblaCarousel from 'embla-carousel-react';
-import heroImage1 from '@/assets/hero-dental-1.jpg';
-import heroImage2 from '@/assets/hero-dental-2.jpg';
+import heroImage1 from '@/assets/kaizen3.webp';
+import heroImage2 from '@/assets/banner.png';
+
+// Hero slides and stats data
+const heroSlides = [
+  {
+    title: "Your Smile is Our Priority",
+    subtitle: "Professional dental care with cutting-edge technology and personalized treatment plans for the whole family.",
+    image: heroImage1
+  },
+  {
+    title: "Advanced Dental Solutions", 
+    subtitle: "From routine cleanings to complex procedures, we provide comprehensive dental care in a comfortable environment.",
+    image: heroImage2
+  }
+];
+
+const stats = [
+  { number: "499", label: "Happy Patients", icon: Users },
+  { number: "16", label: "Years Experience", icon: Award },
+  { number: "23", label: "Hours Emergency Care", icon: Clock },
+  { number: "98", label: "Success Rate %", icon: Star },
+];
 
 const Home = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const aboutRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
+  const [counting, setCounting] = useState<{ [key: string]: number }>({});
+
+  // Embla carousel setup
   const [emblaRef, emblaApi] = useEmblaCarousel({ 
     loop: true,
     duration: 30,
@@ -26,14 +48,30 @@ const Home = () => {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
 
+  // Stats counting functionality
   useEffect(() => {
-    // Auto-scroll carousel
+    stats.forEach(stat => {
+      const count = parseInt(stat.number);
+      let i = 0;
+      const interval = setInterval(() => {
+        setCounting(prev => ({
+          ...prev,
+          [stat.label]: i // Update the count for the respective stat
+        }));
+        i++;
+        if (i > count) clearInterval(interval); // Stop once the count reaches the target number
+      }, 50); // Control the speed of counting (lower = faster)
+    });
+  }, [stats]);
+
+  // Auto-scroll functionality for carousel
+  useEffect(() => {
     if (emblaApi) {
       const autoScroll = setInterval(() => {
         emblaApi.scrollNext();
       }, 5000); // Change slide every 5 seconds
 
-      return () => clearInterval(autoScroll);
+      return () => clearInterval(autoScroll); // Clear interval when component unmounts
     }
   }, [emblaApi]);
 
@@ -61,73 +99,11 @@ const Home = () => {
       repeat: -1,
       yoyo: true
     });
-
-    // Stats counter animation
-    gsap.fromTo('.stat-number',
-      { textContent: 0 },
-      {
-        textContent: (i, target) => target.getAttribute('data-count'),
-        duration: 2,
-        ease: "power2.out",
-        snap: { textContent: 1 },
-        scrollTrigger: {
-          trigger: '.stats-section',
-          start: 'top 80%',
-        }
-      }
-    );
-
-    // About section animations
-    gsap.fromTo('.about-content',
-      { opacity: 0, x: -50 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: '.about-section',
-          start: 'top 80%',
-        }
-      }
-    );
-
-    gsap.fromTo('.about-image',
-      { opacity: 0, x: 50 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: '.about-section',
-          start: 'top 80%',
-        }
-      }
-    );
   }, []);
-
-  const heroSlides = [
-    {
-      title: "Your Smile is Our Priority",
-      subtitle: "Professional dental care with cutting-edge technology and personalized treatment plans for the whole family.",
-      image: heroImage1
-    },
-    {
-      title: "Advanced Dental Solutions", 
-      subtitle: "From routine cleanings to complex procedures, we provide comprehensive dental care in a comfortable environment.",
-      image: heroImage2
-    }
-  ];
-
-  const stats = [
-    { number: "5000", label: "Happy Patients", icon: Users },
-    { number: "15", label: "Years Experience", icon: Award },
-    { number: "24", label: "Hours Emergency Care", icon: Clock },
-    { number: "98", label: "Success Rate %", icon: Star },
-  ];
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section with Carousel */}
+      {/* Hero Section */}
       <section className="relative min-h-screen overflow-hidden pt-32 md:pt-0">
         <div className="embla" ref={emblaRef}>
           <div className="embla__container flex">
@@ -138,7 +114,7 @@ const Home = () => {
                   className="hero-bg absolute inset-0 bg-cover bg-center transform transition-transform duration-[20s] ease-linear"
                   style={{ backgroundImage: `url(${slide.image})` }}
                 ></div>
-                
+
                 {/* Animated overlay particles */}
                 <div className="absolute inset-0 z-15">
                   <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/20 rounded-full animate-ping"></div>
@@ -151,13 +127,13 @@ const Home = () => {
                     <h1 className="text-5xl md:text-7xl font-playfair font-bold mb-6 leading-tight transform">
                       {slide.title.split(' ').map((word, idx) => 
                         word === 'Priority' || word === 'Solutions' ? (
-                          <span key={idx} className="text-primary bg-black/20 px-2 py-1 rounded-lg backdrop-blur-sm inline-block mx-1 animate-pulse">{word} </span>
+                          <span key={idx} className="text-[#fff] inline-block mx-1">{word} </span>
                         ) : (
                           <span key={idx} className="drop-shadow-2xl">{word} </span>
                         )
                       )}
                     </h1>
-                    <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto drop-shadow-lg animate-fade-in-scale">
+                    <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl mx-auto drop-shadow-lg">
                       {slide.subtitle}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-in-up">
@@ -207,8 +183,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="stats-section py-16 bg-primary text-primary-foreground">
+      {/* Stats Section with Counting Animation */}
+      <section className="stats-section pb-12 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -217,7 +193,11 @@ const Home = () => {
                   <stat.icon className="w-12 h-12 text-accent" />
                 </div>
                 <div className="stat-number text-4xl md:text-5xl font-bold mb-2" data-count={stat.number}>
-                  0
+                  {counting[stat.label] || 0}
+                  {stat.label === 'Happy Patients' && '+'}
+                  {stat.label === 'Years Experience' && '+'}
+                  {stat.label === 'Success Rate %' && '%'}
+                  {stat.label === 'Hours Emergency Care' && '/7'}
                 </div>
                 <p className="text-primary-foreground/80 text-lg">{stat.label}</p>
               </div>
@@ -233,52 +213,68 @@ const Home = () => {
             {/* Content */}
             <div className="about-content">
               <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-6 text-foreground">
-                About <span className="text-primary">DentalCare+</span>
+                About <span className="text-primary">Kaizen Dental</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                With over 15 years of experience in dental care, DentalCare+ has been serving the Noida community with comprehensive dental solutions. Our state-of-the-art facilities and experienced team ensure that every patient receives the highest quality care.
+                 At Kaizen Dental, we are committed to providing top-quality dental care, with a focus on improving the health and appearance of our patients' smiles. With over 15 years of experience in the dental field, we have built a strong reputation for delivering excellent care to the Noida community.
               </p>
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                From routine check-ups to advanced procedures like dental implants and orthodontics, we offer a full range of services to keep your smile healthy and beautiful. Our commitment to using the latest technology and techniques ensures comfortable and effective treatments.
+                 We pride ourselves on using cutting-edge dental technology and techniques to ensure our patients receive the most effective and comfortable treatments available. From routine check-ups to advanced procedures, we provide comprehensive services designed to meet all of your dental needs. Whether you need a simple cleaning, dental implants, root canal treatment or orthodontics, our expert team is here to help you achieve a healthy, beautiful smile.
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  <div className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-primary rounded-full mt-3"></div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">Advanced Technology</h4>
-                    <p className="text-muted-foreground text-sm">Latest dental equipment and techniques</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-3"></div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">Expert Team</h4>
-                    <p className="text-muted-foreground text-sm">Experienced and certified professionals</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-3"></div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">Comfortable Care</h4>
-                    <p className="text-muted-foreground text-sm">Patient-focused, gentle treatments</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-3"></div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">Emergency Care</h4>
-                    <p className="text-muted-foreground text-sm">24/7 emergency dental services</p>
-                  </div>
-                </div>
-              </div>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+  <div className="flex items-start gap-3">
+    <div className="w-2 h-2 bg-primary rounded-full mt-3"></div>
+    <div>
+      <h4 className="font-semibold text-foreground mb-1">Advanced Technology</h4>
+      <p className="text-muted-foreground text-sm">Latest dental equipment and techniques</p>
+    </div>
+  </div>
+  <div className="flex items-start gap-3">
+    <div className="w-2 h-2 bg-primary rounded-full mt-3"></div>
+    <div>
+      <h4 className="font-semibold text-foreground mb-1">Expert Team</h4>
+      <p className="text-muted-foreground text-sm">Experienced and certified professionals</p>
+    </div>
+  </div>
+  <div className="flex items-start gap-3">
+    <div className="w-2 h-2 bg-primary rounded-full mt-3"></div>
+    <div>
+      <h4 className="font-semibold text-foreground mb-1">Comfortable Care</h4>
+      <p className="text-muted-foreground text-sm">Patient-focused, gentle treatments</p>
+    </div>
+  </div>
+  <div className="flex items-start gap-3">
+    <div className="w-2 h-2 bg-primary rounded-full mt-3"></div>
+    <div>
+      <h4 className="font-semibold text-foreground mb-1">Emergency Care</h4>
+      <p className="text-muted-foreground text-sm">24/7 emergency dental services</p>
+    </div>
+  </div>
+
+  {/* Added Points */}
+  <div className="flex items-start gap-3">
+    <div className="w-2 h-2 bg-primary rounded-full mt-3"></div>
+    <div>
+      <h4 className="font-semibold text-foreground mb-1">Personalized Treatment</h4>
+      <p className="text-muted-foreground text-sm">Tailored treatment plans based on individual needs</p>
+    </div>
+  </div>
+  <div className="flex items-start gap-3">
+    <div className="w-2 h-2 bg-primary rounded-full mt-3"></div>
+    <div>
+      <h4 className="font-semibold text-foreground mb-1">Long-Term Oral Health</h4>
+      <p className="text-muted-foreground text-sm">Focused on preventing future dental issues through comprehensive care</p>
+    </div>
+  </div>
+</div>
 
               <Button 
                 className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-full group"
                 asChild
               >
                 <Link to="/specialists">
-                  Meet Our Team
+                  Meet Our Specialists
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
@@ -288,9 +284,9 @@ const Home = () => {
             <div className="about-image">
               <Card className="overflow-hidden shadow-strong">
                 <CardContent className="p-0">
-                  <div className="relative h-96 lg:h-[600px]">
+                  <div className="relative h-100 lg:h-[800px]">
                     <img 
-                      src="/lovable-uploads/622a141c-4a91-48a1-a1e6-e04a95590dfe.png"
+                      src="/public/Kaizen1.webp"
                       alt="Modern dental clinic interior"
                       className="w-full h-full object-cover"
                     />
@@ -299,66 +295,6 @@ const Home = () => {
                 </CardContent>
               </Card>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Services Section */}
-      <section className="py-20 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-playfair font-bold mb-4 text-foreground">
-              Our <span className="text-primary">Services</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive dental care services designed to keep your smile healthy and beautiful
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Dental Implants",
-                description: "Permanent tooth replacement solution with natural look and feel",
-                icon: "🦷"
-              },
-              {
-                title: "Root Canal Treatment",
-                description: "Save your natural tooth with our painless root canal procedures",
-                icon: "🔧"
-              },
-              {
-                title: "Teeth Aligners & Braces",
-                description: "Straighten your teeth with modern orthodontic solutions",
-                icon: "📏"
-              },
-              {
-                title: "Teeth Whitening",
-                description: "Professional whitening for a brighter, more confident smile",
-                icon: "✨"
-              },
-              {
-                title: "Oral Surgery",
-                description: "Advanced surgical procedures with minimal discomfort",
-                icon: "🏥"
-              },
-              {
-                title: "Preventive Care",
-                description: "Regular checkups and cleanings to maintain oral health",
-                icon: "🛡️"
-              }
-            ].map((service, index) => (
-              <Card key={index} className="service-card bg-gradient-card border-0 shadow-soft hover:shadow-medium transition-all duration-300">
-                <CardContent className="p-6 text-center">
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">{service.title}</h3>
-                  <p className="text-muted-foreground mb-4">{service.description}</p>
-                  <Button variant="outline" className="rounded-full" asChild>
-                    <Link to="/services">Learn More</Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>

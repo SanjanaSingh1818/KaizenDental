@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Clock, Facebook, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
+import { MapPin, Phone, Clock, Facebook, Mail, Instagram, Linkedin, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -32,11 +32,11 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6">
               <img 
-                src="/src/assets/logo-placeholder.png" 
+                src="/public/Logo_Kaizen Dental_Header.png" 
                 alt="DentalCare+ Logo" 
-                className="w-12 h-12 object-contain"
+                className="w-50 h-50 object-contain"
               />
-              <span className="text-2xl font-playfair font-bold">DentalCare+</span>
+             
             </div>
             <p className="text-secondary-foreground/80 mb-6 leading-relaxed">
               Providing exceptional dental care with advanced technology and personalized treatment plans for over 15 years in Noida.
@@ -44,21 +44,16 @@ const Footer = () => {
             
             {/* Social Media */}
             <div className="flex items-center gap-3">
-              <a href="#" className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+              <a href="https://www.facebook.com/share/1Eekc1rcGD/" className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-sky-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                <Twitter className="w-5 h-5" />
+              <a href="Kaizendentalnoida@gmail.com" className="w-10 h-10 bg-sky-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                <Mail className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-pink-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+              <a href="https://www.instagram.com/kaizendentalnoida/?igsh=MXFvdnRobzd3dm5reA%3D%3D" className="w-10 h-10 bg-pink-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-blue-700 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-red-600 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                <Youtube className="w-5 h-5" />
-              </a>
+             
             </div>
           </div>
 
@@ -105,80 +100,83 @@ const Footer = () => {
                 <div className="flex items-start gap-3 mb-3">
                   <MapPin className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
                   <div>
-                    <p className="font-medium">Clinic 1</p>
+                    <p className="font-medium">Clinic Address</p>
                     <p className="text-sm text-secondary-foreground/80">
-                      C-98 Plot-26 1st and 2nd Floor<br />
-                      Sector 41 Noida UP.
+                     Shop no.1, First floor, Mahagun Mart,<br/> Sector 78, Noida, Uttar Pradesh 201301
                     </p>
                   </div>
-                </div>
-                <div className="flex items-center gap-2 ml-8">
-                  <Clock className="w-4 h-4 text-accent" />
-                  <span className="text-sm text-secondary-foreground/80">Mon-Sun: 10am - 8pm</span>
                 </div>
               </div>
 
               {/* Location 2 */}
-              <div>
-                <div className="flex items-start gap-3 mb-3">
-                  <MapPin className="w-5 h-5 text-accent mt-1 flex-shrink-0" />
-                  <div>
-                    <p className="font-medium">Clinic 2</p>
-                    <p className="text-sm text-secondary-foreground/80">
-                      I-109, Sector 27<br />
-                      Noida 201301.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 ml-8">
-                  <Clock className="w-4 h-4 text-accent" />
-                  <span className="text-sm text-secondary-foreground/80">Tue-Sun: 11am - 8pm</span>
-                </div>
-              </div>
+              
 
               {/* Phone */}
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-accent" />
-                <span className="font-medium">(+91) 9650780998</span>
+              <a href="tel:+919953909390" className="text-sm font-medium hover:underline">+91-9953909390</a>
               </div>
 
               {/* Email */}
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-accent" />
-                <span className="font-medium">info@dentalcareplus.com</span>
+                <a href="mailto:Kaizendentalnoida@gmail.com" className="font-medium hover:underline"> Kaizendentalnoida@gmail.com </a>
               </div>
             </div>
 
             {/* CTA Button */}
-            <Button 
+            {/* <Button 
               className="bg-accent hover:bg-accent-hover text-accent-foreground rounded-full px-6 py-3 mt-6 w-full"
               asChild
             >
               <Link to="/contact">Book Appointment</Link>
-            </Button>
+            </Button> */}
+            {/* Embedded Map */}
+<div className="mt-6 w-full">
+  <iframe
+    title="Kaizen Dental Location"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.1925632713123!2d77.38498717495422!3d28.563979787191492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef66b511b5ad%3A0xaeae64dffee49e59!2sMahagun%20Mart!5e0!3m2!1sen!2sin!4v1754559266614!5m2!1sen!2sin"
+    width="100%"
+    height="150"
+    className="rounded-lg border-0"
+    allowFullScreen=""
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+  ></iframe>
+</div>
           </div>
         </div>
       </div>
-
       {/* Bottom Footer */}
       <div className="border-t border-secondary-foreground/20">
         <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-secondary-foreground/80 text-center md:text-left">
-              © {currentYear} DentalCare+. All rights reserved.
-            </p>
-            <div className="flex items-center gap-6 text-sm">
-              <Link to="/privacy" className="text-secondary-foreground/80 hover:text-accent transition-colors">
-                Privacy Policy
-              </Link>
-              <Link to="/terms" className="text-secondary-foreground/80 hover:text-accent transition-colors">
-                Terms of Service
-              </Link>
-              <Link to="/sitemap" className="text-secondary-foreground/80 hover:text-accent transition-colors">
-                Sitemap
-              </Link>
-            </div>
-          </div>
+         <div className="text-sm text-secondary-foreground/80 text-center md:text-left w-full flex flex-col md:flex-row items-center justify-between gap-4">
+  <p>© {currentYear} Kaizen Dental. All rights reserved.</p>
+ <p className="text-center">
+  Powered by{" "}
+  <a
+    href="https://genesisvirtue.com" // replace with actual URL
+    className="font-semibold text-accent hover:text-white transition-colors duration-300"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Genesis Virtue
+  </a>
+</p>
+
+  <div className="flex items-center gap-6">
+    <Link to="/privacy" className="hover:text-accent transition-colors">
+      Privacy Policy
+    </Link>
+    <Link to="/terms" className="hover:text-accent transition-colors">
+      Terms of Service
+    </Link>
+    <Link to="/sitemap" className="hover:text-accent transition-colors">
+      Sitemap
+    </Link>
+  </div>
+</div>
+
         </div>
       </div>
     </footer>

@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { MapPin, Phone, Mail, Clock, Send, Calendar } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, Calendar, Whatsapp } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import gsap from 'gsap';
 
@@ -114,10 +114,10 @@ const Contact = () => {
                 <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
                   <MapPin className="w-6 h-6 text-primary-foreground" />
                 </div>
-                <h3 className="text-lg font-semibold mb-2 text-foreground">Clinic 1 - Sector 41</h3>
+                <h3 className="text-lg font-semibold mb-2 text-foreground">Clinic Address</h3>
                 <p className="text-muted-foreground text-sm mb-3">
-                  C-98 Plot-26 1st and 2nd Floor<br />
-                  Sector 41 Noida UP.
+                 Shop no.1, First floor, Mahagun Mart,<br/>
+Sector 78, Noida, Uttar Pradesh 201301
                 </p>
                 <div className="flex items-center justify-center gap-2 text-sm">
                   <Clock className="w-4 h-4 text-accent" />
@@ -126,23 +126,41 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            {/* Clinic 2 */}
-            <Card className="contact-animate bg-gradient-card border-0 shadow-soft hover:shadow-medium transition-all duration-300">
-              <CardContent className="p-6 text-center">
-                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="w-6 h-6 text-primary-foreground" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2 text-foreground">Clinic 2 - Sector 27</h3>
-                <p className="text-muted-foreground text-sm mb-3">
-                  I-109, Sector 27<br />
-                  Noida 201301.
+            {/* Whatsapp */}
+<Card className="contact-animate bg-gradient-card border-0 shadow-soft hover:shadow-medium transition-all duration-300">
+  <CardContent className="p-6 text-center">
+    <div className="w-12 h-12 bg-[#08827c] rounded-full flex items-center justify-center mx-auto mb-4">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="w-6 h-6"
+        viewBox="0 0 24 24"
+      >
+        <path
+          fill="white"
+          d="M16.71 13.37c-.27-.13-1.6-.79-1.85-.88-.25-.09-.43-.13-.61.13-.18.27-.7.88-.85 1.06-.16.18-.31.2-.58.07-.27-.13-1.14-.42-2.17-1.34-.8-.71-1.34-1.59-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.47-.07-.13-.61-1.46-.84-2.01-.22-.53-.45-.46-.61-.46-.16 0-.34-.02-.52-.02s-.48.07-.73.34c-.25.27-.96.94-.96 2.29 0 1.35.99 2.65 1.13 2.83.13.18 1.94 2.96 4.71 4.15.66.28 1.17.45 1.57.58.66.21 1.26.18 1.73.11.53-.08 1.6-.65 1.83-1.28.23-.63.23-1.16.16-1.28-.06-.12-.24-.19-.51-.31z"
+        />
+        <path
+          fill="white"
+          d="M12.04 2C6.49 2 2 6.49 2 12.04c0 2.12.56 4.18 1.61 5.97L2 22l4.09-1.58c1.73.94 3.68 1.44 5.73 1.44h.01c5.55 0 10.04-4.49 10.04-10.04S17.59 2 12.04 2zm0 18.06h-.01c-1.84 0-3.64-.49-5.21-1.41l-.37-.22-2.42.93.64-2.51-.26-.39c-1-1.55-1.53-3.35-1.53-5.2 0-5.15 4.19-9.34 9.34-9.34 2.49 0 4.84.97 6.6 2.74 1.76 1.76 2.74 4.11 2.74 6.6 0 5.15-4.19 9.34-9.34 9.34z"
+        />
+      </svg>
+    </div>
+    <h3 className="text-lg font-semibold mb-2 text-foreground">WhatsApp</h3>
+    <p className="text-muted-foreground text-sm mb-3">
+                  24/7 Emergency Support
                 </p>
-                <div className="flex items-center justify-center gap-2 text-sm">
-                  <Clock className="w-4 h-4 text-accent" />
-                  <span>Tue-Sun: 11am - 8pm</span>
-                </div>
-              </CardContent>
-            </Card>
+    <a
+  href="https://wa.me/919953909390"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-primary font-semibold hover:text-primary/80 transition-colors"
+>
+  +91-9953909390
+</a>
+  </CardContent>
+</Card>
+
+
 
             {/* Phone */}
             <Card className="contact-animate bg-gradient-card border-0 shadow-soft hover:shadow-medium transition-all duration-300">
@@ -158,7 +176,7 @@ const Contact = () => {
                   href="tel:+919650780998"
                   className="text-primary font-semibold hover:text-primary/80 transition-colors"
                 >
-                  (+91) 9650780998
+                  +91-9953909390
                 </a>
               </CardContent>
             </Card>
@@ -174,10 +192,10 @@ const Contact = () => {
                   Get in touch via email
                 </p>
                 <a 
-                  href="mailto:info@dentalcareplus.com"
+                  href="mailto:Kaizendentalnoida@gmail.com"
                   className="text-primary font-semibold hover:text-primary/80 transition-colors"
                 >
-                  info@dentalcareplus.com
+                  Kaizendentalnoida@gmail.com
                 </a>
               </CardContent>
             </Card>
@@ -336,7 +354,7 @@ const Contact = () => {
                 <CardContent className="p-0">
                   <div className="aspect-video">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14017.540045179436!2d77.36719785!3d28.5553682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5a43173357b%3A0x37ffce30c87cc03f!2sSector%2041%2C%20Noida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.1925632713123!2d77.38498717495422!3d28.563979787191492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef66b511b5ad%3A0xaeae64dffee49e59!2sMahagun%20Mart!5e0!3m2!1sen!2sin!4v1754559266614!5m2!1sen!2sin"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
@@ -361,7 +379,7 @@ const Contact = () => {
                       className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-full font-medium"
                       asChild
                     >
-                      <a href="tel:+919650780998">
+                      <a href="tel:+919953909390">
                         <Phone className="w-5 h-5 mr-2" />
                         Call Now for Emergency
                       </a>
@@ -372,7 +390,7 @@ const Contact = () => {
                       className="w-full py-3 rounded-full font-medium"
                       asChild
                     >
-                      <a href="https://wa.me/919650780998" target="_blank" rel="noopener noreferrer">
+                      <a href="https://wa.me/919953909390" target="_blank" rel="noopener noreferrer">
                         <span className="w-5 h-5 mr-2">💬</span>
                         WhatsApp Us
                       </a>
@@ -383,7 +401,7 @@ const Contact = () => {
                       className="w-full py-3 rounded-full font-medium"
                       asChild
                     >
-                      <a href="mailto:info@dentalcareplus.com">
+                      <a href="mailto:Kaizendentalnoida@gmail.com">
                         <Mail className="w-5 h-5 mr-2" />
                         Send Email
                       </a>
@@ -394,8 +412,8 @@ const Contact = () => {
                   <div className="mt-6 p-4 bg-accent/10 border border-accent/20 rounded-lg">
                     <h4 className="font-semibold text-accent mb-2">🚨 Emergency Services</h4>
                     <p className="text-sm text-muted-foreground">
-                      For dental emergencies, call us immediately at (+91) 9650780998. 
-                      We provide 24/7 emergency dental care.
+                      For dental emergencies, call us immediately at +91-9953909390. 
+                      {/* We provide 24/7 emergency dental care. */}
                     </p>
                   </div>
                 </CardContent>
