@@ -286,7 +286,7 @@ const Home = () => {
                 <CardContent className="p-0">
                   <div className="relative h-100 lg:h-[800px]">
                     <img 
-                      src="/public/Kaizen1.webp"
+                      src="/Kaizen1.webp"
                       alt="Modern dental clinic interior"
                       className="w-full h-full object-cover"
                     />

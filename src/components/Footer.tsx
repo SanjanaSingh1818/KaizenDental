@@ -32,8 +32,8 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6">
               <img 
-                src="/public/Logo_Kaizen Dental_Header.png" 
-                alt="DentalCare+ Logo" 
+                src="/Logo_Kaizen Dental_Header.png" 
+                alt="Logo" 
                 className="w-50 h-50 object-contain"
               />
              

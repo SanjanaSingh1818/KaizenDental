@@ -12,145 +12,145 @@ const Gallery = () => {
   const galleryImages = [
     {
       id: 1,
-      src: "public/uploads/kaizen3.webp",
+      src: "/uploads/kaizen3.webp",
       alt: "Modern dental clinic reception area",
       category: "Clinic Interior"
     },
     {
       id: 2,
-      src: "public/uploads/img1.webp",
+      src: "/uploads/img1.webp",
       alt: "Advanced dental treatment room",
       category: "Treatment Rooms"
     },
     {
       id: 3,
-      src: "public/uploads/img7.jpg",
+      src: "/uploads/img7.jpg",
       alt: "Happy patient with beautiful smile",
       category: "Patient Smiles"
     },
     {
       id: 4,
-      src: "public/uploads/img3.jpg",
+      src: "/uploads/img3.jpg",
       alt: "Dental team performing procedure",
       category: "Results"
     },
     {
       id: 5,
-      src: "public/uploads/img4.jpg",
+      src: "/uploads/img4.jpg",
       alt: "State-of-the-art dental equipment",
       category: "Results"
     },
     {
       id: 6,
-      src: "public/uploads/kaizen4.jpg",
+      src: "/uploads/kaizen4.jpg",
       alt: "Comfortable waiting area",
       category: "Clinic Interior"
     },
     {
       id: 7,
-      src: "public/uploads/img5.jpg",
+      src: "/uploads/img5.jpg",
       alt: "Before and after dental treatment",
       category: "Results"
     },
     {
       id: 8,
-      src: "public/uploads/img6.jpg",
+      src: "/uploads/img6.jpg",
       alt: "Pediatric dental care room",
       category: "Results"
     },
     {
       id: 9,
-      src: "public/uploads/img6.png",
+      src: "/uploads/img6.png",
       alt: "Dental implant procedure",
       category: "Results"
     },
     {
       id: 10,
-      src: "public/uploads/img8.jpg",
+      src: "/uploads/img8.jpg",
       alt: "Orthodontic treatment results",
       category: "Results"
     },
     {
       id: 11,
-      src: "public/uploads/img10.jpg",
+      src: "/uploads/img10.jpg",
       alt: "Sterilization and hygiene area",
       category: "Results"
     },
     {
       id: 12,
-      src: "public/uploads/11.png",
+      src: "/uploads/11.png",
       alt: "Consultation room",
       category: "Results"
     },
     {
       id: 13,
-      src: "public/uploads/img2.webp",
+      src: "/uploads/img2.webp",
       alt: "Advanced dental treatment room",
       category: "Treatment Rooms"
     },
     {
       id: 14,
-      src: "public/uploads/img9.jpg",
+      src: "/uploads/img9.jpg",
       alt: "Advanced dental treatment room",
       category: "Treatment Rooms"
     },
       {
       id: 15,
-      src: "public/uploads/3.png",
+      src: "/uploads/3.png",
       alt: "Consultation room",
       category: "Results"
     },
       {
       id: 16,
-      src: "public/uploads/4.png",
+      src: "/uploads/4.png",
       alt: "Consultation room",
       category: "Results"
     },
       {
       id: 17,
-      src: "public/uploads/5.png",
+      src: "/uploads/5.png",
       alt: "Consultation room",
       category: "Results"
     },
       {
       id: 18,
-      src: "public/uploads/6.png",
+      src: "/uploads/6.png",
       alt: "Consultation room",
       category: "Results"
     },
       {
       id: 19,
-      src: "public/uploads/7.png",
+      src: "/uploads/7.png",
       alt: "Consultation room",
       category: "Results"
     },
       {
       id: 20,
-      src: "public/uploads/8.png",
+      src: "/uploads/8.png",
       alt: "Consultation room",
       category: "Results"
     },
       {
       id: 21,
-      src: "public/uploads/9.png",
+      src: "/uploads/9.png",
       alt: "Consultation room",
       category: "Results"
     },
       {
       id: 22,
-      src: "public/uploads/10.png",
+      src: "/uploads/10.png",
       alt: "Consultation room",
       category: "Results"
     },
       {
       id: 23,
-      src: "public/uploads/i1.png",
+      src: "/uploads/i1.png",
       alt: "Consultation room",
       category: "Results"
     },
       {
       id: 24,
-      src: "public/uploads/i2.jpg",
+      src: "/uploads/i2.jpg",
       alt: "Consultation room",
       category: "Results"
     },

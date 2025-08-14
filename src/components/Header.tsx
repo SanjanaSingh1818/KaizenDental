@@ -69,7 +69,7 @@ const [servicesOpen, setServicesOpen] = useState(false);
             {/* Logo */}
             <div className="flex items-center gap-3">
               <img 
-                src="/public/Logo_Kaizen Dental_Header.png" 
+                src="/Logo_Kaizen Dental_Header.png" 
                 alt="logo" 
                 className="w-50 h-50 object-contain"
               />   
@@ -238,7 +238,7 @@ const [servicesOpen, setServicesOpen] = useState(false);
                     {/* Mobile Logo */}
                    <div className="flex flex-col items-center gap-2 pb-4 border-b border-border">
                         <img 
-                          src="/public/k-logo.png" 
+                          src="/k-logo.png" 
                           alt="Logo" 
                           className="w-14 h-14 object-contain"
                           />
